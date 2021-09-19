@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DYNAMIT shopping</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <% result.forEach(Product => { %>
+      <div class="card d-inline-block" style="width: 17rem; margin-bottom: 5px;">
+        <img class="card-img-top" src="<%= Product.image %>" style="object-fit: contain;" height="390" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><%= Product.name %></h5>
+            <p class="card-text"><b><%= Product.price %></b> So'm</p>
+            <form action="/order/<%= Product._id %>" method="GET">
+              <input type="number" name="qty" placeholder="Nechta Blok" class="w-100">
+              <input type="text" name="location" style="margin-top: 6px"  placeholder="Qaysi magazin Va manzil(tuman,shahar,kocha)" class="w-100">
+              <button type="submit" class="btn btn-primary mt-2 w-100 ">Zakaz</button>
+            </form>
+          </div>
+        </div>
+  <%}); %>
+  </div>
+   
+</body>
+</html>

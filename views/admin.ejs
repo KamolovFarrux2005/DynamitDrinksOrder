@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>agent ismi</th>
+                <th>agent nomer</th>
+                <th>Buyurtma</th>
+                <th>Qancha</th>
+                <th>Manzil</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% result.forEach(order => { %>
+                <tr>
+                    <% order.AgentId.map(agent =>{ %>
+                        <td><%= agent.agentName %></td>
+                        <td><%= agent.agentNumber %></td>
+                       <% }) %>
+                    <td><img src="<%= order.ProductId[0].image %>" width="60px" height="60px" style="object-fit: cover;" alt=""></td>
+                    <td><%= order.QTY %></td>
+                    <td><%= order.location %></td>
+                    <td><a href="/admin/delete/<%= order._id %>" class="btn btn-danger">Delete</a></td>
+                </tr> 
+            <% }); %>
+           
+        </tbody>
+    </table>
+    <form action="admin/post" method="POST">
+        <input type="text" name="name" placeholder="Product name">
+        <input type="text" name="price"  placeholder="Product price">
+        <input type="text" name="image" placeholder="Product image">
+        <button type="submit" class="btn btn-success">Qoshish</button>
+    </form>
+    </div>
+</body>
+</html>
